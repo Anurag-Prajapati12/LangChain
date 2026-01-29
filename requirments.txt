@@ -40,5 +40,8 @@ beautifulsoup4
 chromadb
 faiss-cpu
 
+# Chains visualization
+grandalf
+
 # Other lib
 PyPDf
