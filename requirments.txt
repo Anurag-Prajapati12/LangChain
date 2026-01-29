@@ -3,6 +3,7 @@ langchain
 langchain-core
 langchain-community
 langchain-text-splitters
+langchain-experimental
 
 # OpenAI Integration
 langchain-openai
@@ -27,7 +28,17 @@ python-dotenv
 numpy
 scikit-learn
 
+# Jupyter / notebooks
+ipykernel
 
 
-PyPDf
+# Web + Wikipedia retrieval
+Wikipedia
 beautifulsoup4
+
+# Vector store
+chromadb
+faiss-cpu
+
+# Other lib
+PyPDf
