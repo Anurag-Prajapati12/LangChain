@@ -1,7 +1,7 @@
 from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint,HuggingFacePipeline
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
-from langchain_core.output_parsers import StrOutputParser
+from langchain_core.output_parsers import JsonOutputParser
 
 load_dotenv()
 
@@ -21,24 +21,17 @@ llm=HuggingFacePipeline.from_model_id(
 
 model = ChatHuggingFace(llm=llm)
 
+parser = JsonOutputParser()
 
-#1 prompt -> detailed report
-template1 = PromptTemplate(
-    template = "write a detailed report on {topic}",
-    input_variables = ['topic']    
+template = PromptTemplate(
+    template='Give me a name, age and city of a fictional person \n {format_instruction}',
+    input_variables=[],
+    partial_variables={'format_instruction':parser.get_format_instructions()} # it is partial_variable because it is not fill by user, it is fill in runtime
 )
+prompt = template.format()
 
+result = model.invoke(prompt)
+print(result.content)
+final_result = parser.parse(result.content)
 
-
-#2 prompt -> summary
-template2 = PromptTemplate(
-    template = "write a 5 line summary summary on following text. /n {text}",
-    input_variables = ['text']    
-)
-
-parser = StrOutputParser()
-
-chain = template1 | model | parser | template2 | model | parser
-
-result = chain.invoke({"topic":"black hole"})
-print(result)
+print(final_result)

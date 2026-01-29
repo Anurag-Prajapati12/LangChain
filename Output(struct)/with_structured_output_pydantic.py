@@ -9,7 +9,7 @@ load_dotenv()
 model = ChatGoogleGenerativeAI(model='models/gemini-2.5-flash')
 
 #schema                 
-class Review(TypedDict):        #<-----pydantic, this gives us data validation 
+class Review(BaseModel):        #<-----pydantic, this gives us data validation 
 
     #unless the data types of the attributes are not matched the value will not be passed
     key_themes: List[str] = Field(description='Write down all the key themes discussed in the review in a list')

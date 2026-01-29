@@ -16,7 +16,7 @@ llm=HuggingFacePipeline.from_model_id(
         "torch_dtype": "float16",
         "device_map": None
     }
-)
+)   
 
 model = ChatHuggingFace(llm=llm)
 
