@@ -45,3 +45,5 @@ grandalf
 
 # Other lib
 PyPDf
+duckduckgo-search
+ddgs
