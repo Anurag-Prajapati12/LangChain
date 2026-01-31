@@ -18,6 +18,7 @@ prompt2 = PromptTemplate(
     input_variables = ['text'],
 
 )
+
 parser = StrOutputParser()
 
 chain = prompt1 | model | parser | prompt2 | model | parser
